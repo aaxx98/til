@@ -1,5 +1,46 @@
-# Created by https://www.toptal.com/developers/gitignore/api/vscode,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=vscode,node
+
+# Created by https://www.toptal.com/developers/gitignore/api/vscode,node,c++,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=vscode,node,c++,react
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 
 ### Node ###
 # Logs
@@ -115,6 +156,19 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
+
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
@@ -123,4 +177,4 @@ dist
 !.vscode/extensions.json
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/vscode,node
+# End of https://www.toptal.com/developers/gitignore/api/vscode,node,c++,react
