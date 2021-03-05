@@ -17,7 +17,7 @@ using namespace std;
 int t, k;
 int file[500];
 int price[501]; //file 누적합
-int cache[500][500];
+int cache[500][500]; //누적 비용
 
 int sumPrice(int s, int e){
     int& ret = cache[s][e];
@@ -30,15 +30,13 @@ int sumPrice(int s, int e){
     for(int i=s; i<e; i++){
         ret = min(ret, sumPrice(s,i)+sumPrice(i+1,e));
     }
-
-    
-    cout<< s << " " << e << " " << ret + price[e+1] - price[s] << endl;
+    //cout<< s << " " << e << " " << ret + price[e+1] - price[s] << endl;
     return ret = ret + price[e+1] - price[s];
 }
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0);
-    
+
     cin>>t;
     while(t--){
         cin>>k;
