@@ -70,3 +70,34 @@ cat.say(); //야옹
 ```
 
 위 코드에서 Dog, Cat은 Animal의 프로토타입을 복사해 갖는것으로 속성을 상속받고있다.
+
+위 코드보다 오류가 적고 명시적인 방법의 상속은 다음과 같다.
+
+[상속 및 오버라이딩](https://www.zerocho.com/category/JavaScript/post/59c17a58f40d2800197c65d6)
+
+```js
+var Animal = function () {};
+Animal.prototype.move = function () {
+    console.log("동물이 움직여요");
+};
+
+var Cat = function () {
+    Animal.apply(this, arguments); // 속성 상속받는 방법
+};
+Cat.prototype = Object.create(Animal.prototype); // 프로토타입 상속 방법
+Cat.prototype.constructor = Cat; // 버그 패치
+
+console.log(new Animal().move()); // 동물이 움직여요
+console.log(new Cat().move()); // 동물이 움직여요
+
+Cat.prototype.move = function (sound) {
+    // 오버라이딩
+    console.log(sound + " 움직여요");
+    return "야옹";
+};
+
+console.log(new Cat().move("살금살금")); // 살금살금 움직여요
+```
+
+부모 `Animal`의 프로토타입을 그대로 받아와서, `prototype.constructor`만 수정해 주었다.  
+`Cat`의 `move()`는 오버라이드한 함수이다.
