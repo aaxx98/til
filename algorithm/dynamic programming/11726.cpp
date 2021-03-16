@@ -19,8 +19,8 @@ int cache[1001];
 
 int tiling(int n)
 {
-    if (n <= 1)
-        return 1;
+    if (n <= 2)
+        return n;
 
     int &ret = cache[n];
     if (ret != -1)

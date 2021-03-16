@@ -93,22 +93,10 @@ bool michin()
             nextR.push_back(minp);
         }
     }
-    /*
-    for (int i = 0; i < r; i++)
-    {
-        for (int j = 0; j < c; j++)
-            cout << maps[i][j];
-        cout << endl;
-    }
-    */
-    /*
-    drawmap();
-    cout << endl;
-    */
     R.clear();
-    for (int i = nextR.size() - 1; i >= 0; i--)
+
+    for (auto r : nextR)
     {
-        point r = nextR[i];
         if (maps[r.x][r.y] > 1)
             maps[r.x][r.y] = 0;
 
