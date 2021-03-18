@@ -77,12 +77,8 @@ int main()
         for (int j = 0; j < N; j++)
             cin >> maps[i][j];
 
-    bool flag = true;
     while (true)
     {
-        if (!flag)
-            break;
-        flag = false;
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < N; j++)
@@ -95,36 +91,13 @@ int main()
             }
         }
         if (cnt > 0)
-            count++;
-        int i, j;
-        for (i = 0; i < N; i++)
         {
-            for (j = 0; j < N; j++)
-            {
-                for (int k = 0; k < 4; k++)
-                {
-                    if (i + dir[k].x < N && j + dir[k].y < N && i + dir[k].x >= 0 && j + dir[k].y >= 0)
-                    {
-                        int diff = abs(maps[i][j] - maps[i + dir[k].x][j + dir[k].y]);
-                        //cout << diff << " _ " << i << " " << j << " _ " << i + dir[k].x << " " << j + dir[k].y << endl;
-                        if (diff <= R && diff >= L)
-                        {
-                            //cout << diff << endl;
-                            flag = true;
-                            break;
-                        }
-                        if (flag)
-                            break;
-                    }
-                }
-                if (flag)
-                    break;
-            }
-            if (flag)
-                break;
-        }
-        if (flag)
+            count++;
             memset(visited, 0, sizeof(visited));
+            cnt = 0;
+        }
+        else
+            break;
     }
 
     /*
