@@ -237,6 +237,84 @@ function FriendStatus(props) {
 `useEffect`에서 return하는 함수는 컴포넌트의 마운트가 해제될 때 실행된다.  
 `useEffect`가 return 하는 함수를 `cleanup 함수`라고 한다.
 
-## Context API를 활용한 상태 관리
+### userReducer
 
-### 커스텀 Hooks
+```js
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+-   매개변수 `reducer`:
+    현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해 주는 함수
+-   매개변수 `initialState`: 초기 상태
+
+`useReduce()`를 사용하면 `state`는 현재 컴포넌트의 상태가 되고, `dispatch`는 action을 발생시키는 함수가 된다.
+
+```js
+import React, { useReducer } from "react";
+
+function reducer(state, action) {
+    switch (action.type) {
+        case "INCREMENT":
+            return state + 1;
+        case "DECREMENT":
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
+function Counter() {
+    const [number, dispatch] = useReducer(reducer, 0);
+
+    const onIncrease = () => {
+        dispatch({ type: "INCREMENT" });
+    };
+
+    const onDecrease = () => {
+        dispatch({ type: "DECREMENT" });
+    };
+
+    return (
+        <div>
+            <h1>{number}</h1>
+            <button onClick={onIncrease}>+1</button>
+            <button onClick={onDecrease}>-1</button>
+        </div>
+    );
+}
+
+export default Counter;
+```
+
+## Context
+
+context를 이용하면 단계마다 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공할 수 있다.
+
+-   Context 생성
+
+    다음과 같이 Context 객체를 생성할 수 있다.
+
+    ```js
+    const MyContext = React.createContext(defaultValue);
+    ```
+
+    -   `defaultValue`는 적절한 Provider를 찾지 못했을 때만 사용되는 값이다.
+
+-   Context.Provider
+
+    ```js
+    <MyContext.Provider value={/* 어떤 값 */}>
+    ```
+
+    Provider는 context를 구독하는 컴포넌트들에게 context의 변화를 알리는 역할을 한다.  
+    `value` prop을 받아서 이 값을 하위 컴포넌트에게 전달한다.
+
+    Provider 하위의 컴포넌트들은 context를 구독하는 컴포넌트들이다. Provider의 `value ` prop가 바뀔 때 마다 다시 렌더링 된다.
+
+-   `useContext()`
+
+    context 객체를 받아 그 context의 현재 값을 반환한다.
+
+    ```js
+    const value = useContext(MyContext);
+    ```
