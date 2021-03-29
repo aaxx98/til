@@ -15,30 +15,22 @@
 using namespace std;
 long long find5(long long n)
 {
-    long long cnt = 0, total = 0;
-    for (long long i = n; i >= 5; i /= 5)
+    long long cnt = 0;
+    for (long long i = 5; n / i > 0; i *= 5)
     {
-        cnt++;
-        total += cnt;
-        //cout << cnt << endl;
+        cnt += n / i;
     }
-    total += n / 5 - cnt;
-
-    return total;
+    return cnt;
 }
 
 long long find2(long long n)
 {
-    long long cnt = 0, total = 0;
-    for (long long i = n; i >= 2; i /= 2)
+    long long cnt = 0;
+    for (long long i = 2; n / i > 0; i *= 2)
     {
-        cnt++;
-        total += cnt;
-        //cout << cnt << endl;
+        cnt += n / i;
     }
-    total += n / 2 - cnt;
-
-    return total;
+    return cnt;
 }
 
 int main()
@@ -48,7 +40,7 @@ int main()
     long long n, k;
     long long five, two;
     cin >> n >> k;
-    //cout << find5(2000000000) << endl;
+
     five = find5(n) - find5(k) - find5(n - k);
     two = find2(n) - find2(k) - find2(n - k);
 
