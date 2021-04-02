@@ -3,24 +3,28 @@ import PropTypes from "prop-types";
 
 class App extends React.Component {
     state = {
-        count: 0,
+        isLoading: true,
+        seconds: 0,
     };
 
-    add = () => {
-        this.setState(cur => ({ count: cur.count + 1 }));
-    };
-    minus = () => {
-        this.setState(cur => ({ count: cur.count - 1 }));
-    };
+    componentDidMount() {
+        setInterval(() => {
+            if (this.state.seconds < 5)
+                this.setState(cur => ({
+                    isLoading: true,
+                    seconds: cur.seconds + 1,
+                }));
+            else
+                this.setState(cur => ({
+                    isLoading: false,
+                    seconds: 6,
+                }));
+        }, 1000);
+    }
 
     render() {
-        return (
-            <div>
-                <h1>지금 숫자는 {this.state.count}</h1>
-                <button onClick={this.add}>더하기</button>
-                <button onClick={this.minus}>빼기</button>
-            </div>
-        );
+        const { isLoading, seconds } = this.state;
+        return <div>{isLoading ? "Loading..." + seconds : "We are Ready"}</div>;
     }
 }
 export default App;

@@ -113,3 +113,122 @@ class App extends React.Component {
     }
 }
 ```
+
+## 3. Component Life Cycle
+
+### Life Cycle Method
+
+: react가 component를 생성하고, 없애는 과정
+
+-   컴포넌트를 render 할 때, `render` 메소드만 실행되는 것이 아니라 다른 함수도 호출된다.
+
+    -   ## Mounting: 컴포넌트 생성
+
+        ```js
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                console.log("constructor");
+            }
+            componentDidMount() {
+                console.log("component rendered");
+            }
+            render() {
+                console.log("render");
+                return (
+                    <div>
+                        <h1>지금 숫자는 {this.state.count}</h1>
+                        <button onClick={this.add}>더하기</button>
+                        <button onClick={this.minus}>빼기</button>
+                    </div>
+                );
+            }
+        }
+
+        //constructor
+        //render
+        //component rendered
+        ```
+
+        -   1. `constructor()`: class 내부의 생성자가 render 전에 실행된다.
+        -   2. `static getDerivedStateFromProps()`
+        -   3. `render()`
+        -   4. `componentDidMount()`: component가 render된 후 실행된다.
+
+    -   ## Updating: 컴포넌트 업데이트
+
+        ```js
+        class App extends React.Component {
+            componentDidUpdate() {
+                console.log("i'm updated!!");
+            }
+            state = {
+                count: 0,
+            };
+
+            add = () => {
+                this.setState(cur => ({ count: cur.count + 1 }));
+            };
+            minus = () => {
+                this.setState(cur => ({ count: cur.count - 1 }));
+            };
+
+            render() {
+                console.log("render");
+                return (
+                    <div>
+                        <h1>지금 숫자는 {this.state.count}</h1>
+                        <button onClick={this.add}>더하기</button>
+                        <button onClick={this.minus}>빼기</button>
+                    </div>
+                );
+            }
+        }
+        //버튼을 클릭할 때 마다 console에 다음과 같은 내용이 출력된다.
+        //render
+        //i'm updated!!
+        ```
+
+        `setState` 호출 시 다음과 같은 작업이 발생한다.
+
+        -   1. `static getDerivedStateFromProps()`
+        -   2. `shouldComponentUpdate()`
+        -   3. `render()`
+        -   4. `getSnapshotBeforeUpdate()`
+        -   5. `componentDidUpdate()`
+
+    -   ## Unmounting: 컴포넌트 삭제
+        -   1. `componentWillUnmount()`: 현재 페이지를 벗어나서 컴포넌트를 더이상 사용하지 않게 되었을때 호출된다.
+
+## 실습코드 응용
+
+5초의 로딩이 끝나면 We are Ready를 띄우는 컴포넌트
+
+```js
+class App extends React.Component {
+    state = {
+        isLoading: true,
+        seconds: 0,
+    };
+
+    componentDidMount() {
+        setInterval(() => {
+            if (this.state.seconds < 5)
+                this.setState(cur => ({
+                    isLoading: true,
+                    seconds: cur.seconds + 1,
+                }));
+            else
+                this.setState(cur => ({
+                    isLoading: false,
+                    seconds: 6,
+                }));
+        }, 1000);
+    }
+
+    render() {
+        const { isLoading, seconds } = this.state;
+        return <div>{isLoading ? "Loading..." + seconds : "We are Ready"}</div>;
+    }
+}
+```
