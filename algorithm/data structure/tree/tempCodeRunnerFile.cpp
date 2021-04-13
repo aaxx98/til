@@ -13,34 +13,7 @@
 #include <cmath>
 
 using namespace std;
-int parent[502];
-
-int getParent(int set[], int x)
-{
-    if (set[x] == x)
-        return x;
-    return set[x] = getParent(set, set[x]);
-}
-
-void unionParent(int set[], int a, int b)
-{
-    a = getParent(set, a);
-    b = getParent(set, b);
-    if (a < b)
-        set[b] = a;
-    else
-        set[a] = b;
-}
-
-bool find(int set[], int a, int b)
-{
-    a = getParent(set, a);
-    b = getParent(set, b);
-    if (a == b)
-        return true;
-    else
-        return false;
-}
+bool visited[502];
 
 int main()
 {
@@ -53,36 +26,34 @@ int main()
     {
         int x, y;
         int trees = 0;
-
-        for (int i = 1; i <= n; i++)
-        {
-            parent[i] = i;
-        }
-
+        bool isZero = false;
         for (int i = 0; i < m; i++)
         {
             cin >> x >> y;
-            if (find(parent, x, y))
+            if (!visited[x] && !visited[y]) //둘다 false라면
             {
-                for (int i = 1; i <= n; i++)
-                {
-                    int p = getParent(parent, x);
-                    if (parent[i] == p)
-                        parent[i] = 0;
-                }
+                visited[x] = true;
+                visited[y] = true;
+                trees++;
             }
-            else
-                unionParent(parent, x, y);
+            else if (!visited[x] || !visited[y]) //둘중에 하나만 false라면
+            {
+                visited[x] = true;
+                visited[y] = true;
+            }
+
+            else if (visited[x] && visited[y]) //둘다 true라면 cycle
+                isZero = true;
         }
 
         for (int i = 1; i <= n; i++)
         {
-            if (i == parent[i])
+            if (!visited[i])
                 trees++;
         }
 
         cout << "Case " << tc;
-        if (trees == 0)
+        if (isZero)
             cout << ": No trees.\n";
         else
         {
@@ -94,6 +65,7 @@ int main()
 
         tc++;
         cin >> n >> m;
+        memset(visited, 0, sizeof(visited));
     }
 
     return 0;
