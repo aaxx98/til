@@ -5,6 +5,7 @@
 ### C++ ###
 # Prerequisites
 *.d
+tempCodeRunnerFile.cpp
 
 # Compiled Object files
 *.slo
