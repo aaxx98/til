@@ -16,7 +16,8 @@ using namespace std;
 
 vector<int> inorder, postorder;
 
-void printPreOrder(int a, int b, int c, int d, int n)
+//postorder구간:[a,b), inorder시작점: c, tree요소개수: n
+void printPreOrder(int a, int b, int c, int n)
 {
     const int N = n;
 
@@ -28,8 +29,8 @@ void printPreOrder(int a, int b, int c, int d, int n)
     const int L = find(inorder.begin(), inorder.end(), root) - inorder.begin() - c;
     const int R = N - 1 - L;
     //cout << endl << L << " " << R << endl;
-    printPreOrder(a, a + L, c, c + L, L);
-    printPreOrder(a + L, a + N - 1, c + L + 1, c + N, R);
+    printPreOrder(a, a + L, c, L);
+    printPreOrder(a + L, a + N - 1, c + L + 1, R);
 }
 
 int main()
@@ -51,6 +52,6 @@ int main()
         postorder.push_back(tmp);
     }
 
-    printPreOrder(0, n, 0, n, n);
+    printPreOrder(0, n, 0, n);
     return 0;
 }
