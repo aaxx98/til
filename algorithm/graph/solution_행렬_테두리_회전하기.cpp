@@ -24,6 +24,7 @@ vector<int> solution(int rows, int columns, vector<vector<int>> queries)
 {
     vector<int> maps;
     vector<int> answer;
+    C = columns;
 
     for (int i = 0; i <= rows * columns; i++)
     {
@@ -42,25 +43,33 @@ vector<int> solution(int rows, int columns, vector<vector<int>> queries)
         for (int i = x1; i < x2; i++)
             index.push_back(calc(i, y2));
 
-        for (int i = y2; i > y1; i++)
+        for (int i = y2; i > y1; i--)
             index.push_back(calc(x2, i));
 
-        for (int i = x2; i > x1; i++)
+        for (int i = x2; i > x1; i--)
             index.push_back(calc(i, y1));
-
-        int tmp = maps[index.size() - 1];
-        minnum = min(minnum, tmp);
-        for (int i = index.size() - 2; i > 0; i--)
-        {
-            minnum = min(minnum, maps[i]);
-            maps[i + 1] = maps[i];
-        }
-        maps[0] = tmp;
-
         /*
-        for (int i = 0; i < 36; i++)
-            cout << maps[i] << " ";
+        for (auto i : index)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
         */
+
+        int tmp = maps[index[index.size() - 1]];
+        minnum = min(minnum, tmp);
+        for (int i = index.size() - 2; i >= 0; i--)
+        {
+            minnum = min(minnum, maps[index[i]]);
+            maps[index[i + 1]] = maps[index[i]];
+        }
+        maps[index[0]] = tmp;
+        /*
+        for (int i = 0; i <= 36; i++)
+            cout << maps[i] << " ";
+        cout << endl;
+        */
+        answer.push_back(minnum);
     }
     return answer;
 }
@@ -74,6 +83,9 @@ int main()
                                 {3, 3, 6, 6},
                                 {5, 1, 6, 3}};
 
-    solution(6, 6, quer);
+    vector<int> sol = solution(6, 6, quer);
+    for (auto x : sol)
+        cout << x << " ";
+
     return 0;
 }
