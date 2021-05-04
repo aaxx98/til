@@ -41,9 +41,9 @@ bool judge(vector<vector<int>> key, vector<vector<int>> lock)
     int key_N = key.size();
     int lock_N = lock.size();
 
-    for (int i = 0; i < lock_N; i++)
+    for (int i = key_N * (-1) + 1; i < lock_N; i++)
     {
-        for (int j = 0; j < lock_N; j++)
+        for (int j = key_N * (-1) + 1; j < lock_N; j++)
         {
             ret = true;
 
@@ -52,21 +52,26 @@ bool judge(vector<vector<int>> key, vector<vector<int>> lock)
                     temp[ii][jj] = lock[ii][jj];
 
             for (int x = 0; x < key_N && i + x < lock_N; x++)
+            {
                 for (int y = 0; y < key_N && j + y < lock_N; y++)
-                    temp[i + x][j + y] = lock[i + x][j + y] + key[x][y];
+                {
+                    if (i + x >= 0 && j + y >= 0)
+                        temp[i + x][j + y] = lock[i + x][j + y] + key[x][y];
+                }
+            }
 
             for (int ii = 0; ii < lock_N; ii++)
             {
                 for (int jj = 0; jj < lock_N; jj++)
                 {
-                    cout << temp[ii][jj] << " ";
+                    //cout << temp[ii][jj] << " ";
 
                     if (temp[ii][jj] != 1)
                         ret = false;
                 }
-                cout << endl;
+                //cout << endl;
             }
-            cout << endl;
+            //cout << endl;
             if (ret == true)
                 return true;
         }
