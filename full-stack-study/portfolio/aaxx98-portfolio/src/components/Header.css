@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap");
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
+        url("../img/header-img.jpg");
+    background-size: cover;
+    color: white;
+    text-align: center;
+    width: auto;
+    height: 50vh;
+}
+.header h1 {
+    display: inline-block;
+    font-size: 2em;
+    position: relative;
+    top: 15vh;
+    font-family: "Nanum Gothic", sans-serif;
+    z-index: 1000;
+}

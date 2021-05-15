@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo&display=swap");
+
+.container {
+    margin: auto;
+    width: 70vw;
+}
+h1 {
+    font-family: "Nanum Myeongjo", serif;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .container {
+        width: 90vw;
+    }
+}
