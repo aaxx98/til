@@ -10,7 +10,7 @@ function App() {
             <Header></Header>
             <div className="container">
                 <Intro></Intro>
-                <div className="Projects">
+                <div className="projects">
                     <h1>프로젝트</h1>
                     <Project
                         key={3}

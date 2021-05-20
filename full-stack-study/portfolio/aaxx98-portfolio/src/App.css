@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&family=Nanum+Myeongjo&display=swap");
-
+.projects {
+    margin: 10vh 0;
+}
 .container {
     margin: auto;
     width: 70vw;
