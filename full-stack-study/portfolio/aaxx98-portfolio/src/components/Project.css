@@ -3,6 +3,7 @@ span {
     display: inline-block;
 }
 .tag {
+    color: black;
     background-color: yellow;
     margin: 3px;
     padding: 5px;
@@ -18,6 +19,17 @@ span {
     background-color: lightyellow;
 }
 .title {
+    color: black;
     font-size: 1.5em;
     margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.contents {
+    margin-top: 10px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
 }

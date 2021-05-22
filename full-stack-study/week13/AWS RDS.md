@@ -24,3 +24,12 @@
 -   타임존
 -   Character Set
 -   Max Connection
+
+## 내 PC에서 RDS로 접속
+
+1. MySQL 설치
+
+    > sudo yum install mysql
+
+2. RDS에 접속
+    > mysql -u [마스터이름] -p -h [엔드포인트]
