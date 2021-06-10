@@ -18,7 +18,7 @@ function coloring() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-function Project({ id, title, tags, date, contents }) {
+function Project({ id, title, tags, date, contents, detail }) {
     return (
         <Link
             to={{
@@ -29,6 +29,7 @@ function Project({ id, title, tags, date, contents }) {
                     tags,
                     date,
                     contents,
+                    detail,
                 },
             }}
         >

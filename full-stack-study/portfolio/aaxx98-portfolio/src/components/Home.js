@@ -13,6 +13,10 @@ const projectArray = [
         contents:
             "인터랙티브 라이브러리 '프로세싱(Processing)'을 활용한 UX/UI 프로젝트",
         tags: ["Processing"],
+        detail: {
+            image: "../img/7016_1.png",
+            link: "https://semicolon-janghyejin.github.io/js-study/smu7016/home.html",
+        },
     },
     {
         key: 2,
@@ -21,6 +25,10 @@ const projectArray = [
         date: [`2019.04`, `2019.06`],
         contents: "자료구조 Stack의 원리를 배울 수 있는 햄버거 만들기 게임",
         tags: ["Java8"],
+        detail: {
+            image: "../img/stackburger_1.png",
+            link: "https://github.com/Semicolon-JangHyeJin/stackburger",
+        },
     },
     {
         key: 3,
@@ -29,6 +37,10 @@ const projectArray = [
         date: [`2019.07`, `2020.06`],
         contents: "반도체 생산 및 납품 관리를 위한 가상 ERP System",
         tags: ["Java8", "JSP", "Bootstrap", "MySQL"],
+        detail: {
+            image: "../img/erp_1.png",
+            link: "https://github.com/Semicolon-JangHyeJin/sc-grad-erp",
+        },
     },
 ];
 
@@ -61,6 +73,7 @@ class Home extends React.Component {
                                     date={project.date}
                                     contents={project.contents}
                                     tags={project.tags}
+                                    detail={project.detail}
                                 ></Project>
                             ))}
                     </div>

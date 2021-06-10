@@ -17,6 +17,7 @@ class Detail extends React.Component {
                 <div className="detail">
                     <h1>{project.title}</h1>
                     <div>{project.contents}</div>
+                    <img src="img/stackburger_1.png" alt={project.title}></img>
                 </div>
             );
         } else {
