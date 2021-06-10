@@ -5,9 +5,9 @@ span {
 .tag {
     color: black;
     background-color: yellow;
-    margin: 3px;
-    padding: 5px;
-    border-radius: 10px;
+    margin: 5px;
+    padding: 7px;
+    border-radius: 50px;
     font-family: "Do Hyeon", sans-serif;
 }
 .date {

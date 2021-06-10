@@ -3,6 +3,7 @@ import Header from "./Header";
 import Intro from "./Intro";
 import Project from "./Project";
 import React from "react";
+import Fade from "react-reveal/Fade";
 
 const projectArray = [
     {
@@ -14,7 +15,7 @@ const projectArray = [
             "인터랙티브 라이브러리 '프로세싱(Processing)'을 활용한 UX/UI 프로젝트",
         tags: ["Processing"],
         detail: {
-            image: "../img/7016_1.png",
+            image: "/img/7016_1.png",
             link: "https://semicolon-janghyejin.github.io/js-study/smu7016/home.html",
         },
     },
@@ -26,7 +27,7 @@ const projectArray = [
         contents: "자료구조 Stack의 원리를 배울 수 있는 햄버거 만들기 게임",
         tags: ["Java8"],
         detail: {
-            image: "../img/stackburger_1.png",
+            image: "/img/stackburger_1.png",
             link: "https://github.com/Semicolon-JangHyeJin/stackburger",
         },
     },
@@ -38,7 +39,7 @@ const projectArray = [
         contents: "반도체 생산 및 납품 관리를 위한 가상 ERP System",
         tags: ["Java8", "JSP", "Bootstrap", "MySQL"],
         detail: {
-            image: "../img/erp_1.png",
+            image: "/img/erp_1.png",
             link: "https://github.com/Semicolon-JangHyeJin/sc-grad-erp",
         },
     },
@@ -62,19 +63,22 @@ class Home extends React.Component {
                     <Intro></Intro>
                     <div className="projects">
                         <h1>프로젝트</h1>
+                        <p>프로젝트를 클릭하면 상세 정보로 이동합니다.</p>
                         {project
                             .slice(0)
                             .reverse()
                             .map(project => (
-                                <Project
-                                    key={project.key}
-                                    id={project.id}
-                                    title={project.title}
-                                    date={project.date}
-                                    contents={project.contents}
-                                    tags={project.tags}
-                                    detail={project.detail}
-                                ></Project>
+                                <Fade bottom>
+                                    <Project
+                                        key={project.key}
+                                        id={project.id}
+                                        title={project.title}
+                                        date={project.date}
+                                        contents={project.contents}
+                                        tags={project.tags}
+                                        detail={project.detail}
+                                    ></Project>
+                                </Fade>
                             ))}
                     </div>
                 </div>

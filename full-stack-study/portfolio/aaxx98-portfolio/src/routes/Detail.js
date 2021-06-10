@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Project from "../components/Project";
+import Fade from "react-reveal/Fade";
 
 class Detail extends React.Component {
     componentDidMount() {
@@ -15,9 +16,14 @@ class Detail extends React.Component {
             const project = location.state;
             return (
                 <div className="detail">
-                    <h1>{project.title}</h1>
-                    <div>{project.contents}</div>
-                    <img src="img/stackburger_1.png" alt={project.title}></img>
+                    <Fade bottom>
+                        <h1>{project.title}</h1>
+                        <div>{project.contents}</div>
+                        <img
+                            src={project.detail.image}
+                            alt={project.title}
+                        ></img>
+                    </Fade>
                 </div>
             );
         } else {
