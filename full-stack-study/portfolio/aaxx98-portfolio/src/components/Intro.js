@@ -1,8 +1,7 @@
 import "./Intro.css";
 const intro_contents = [
     "상명대학교 컴퓨터과학과 (2017.03~2021.02)",
-    "",
-    "백엔드 개발자를 목표로 공부중입니다.",
+    "풀스택 개발자를 목표로 공부중입니다.",
 ];
 function Intro() {
     return (

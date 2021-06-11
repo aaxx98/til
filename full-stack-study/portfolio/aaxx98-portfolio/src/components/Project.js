@@ -33,7 +33,12 @@ function Project({ id, title, tags, date, contents, detail }) {
                 },
             }}
         >
-            <div className="project">
+            <div
+                className="project"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(255, 255, 198, 0.8), rgba(255, 255, 198, 0.8)),url(${detail.linkimg})`,
+                }}
+            >
                 <span className="title">{title}</span>
                 <span className="date">{`(${date[0]} ~ ${date[1]})`}</span>
                 <div className="skills">

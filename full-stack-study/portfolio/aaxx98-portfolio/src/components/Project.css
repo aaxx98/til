@@ -4,7 +4,6 @@ span {
 }
 .tag {
     color: black;
-    background-color: yellow;
     margin: 5px;
     padding: 7px;
     border-radius: 50px;
@@ -16,7 +15,7 @@ span {
 }
 .project {
     margin: 20px;
-    background-color: lightyellow;
+    padding: 20px 30px;
 }
 .title {
     color: black;
