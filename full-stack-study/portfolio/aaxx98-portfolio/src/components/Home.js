@@ -41,7 +41,7 @@ const projectArray = [
         title: "반도체 제조 공정 웹 앱 ERP(Enterprise Resource Planning) System",
         date: [`2019.07`, `2020.06`],
         contents: "반도체 생산 및 납품 관리를 위한 웹 앱 ERP System",
-        tags: ["Java8", "JSP", "Bootstrap", "MySQL"],
+        tags: ["Java8", "JSP", "Bootstrap", "MySQL", "Apache Tomcat"],
         detail: {
             linkimg: "/img/erp_2.png",
             image: "/img/erp_1.png",

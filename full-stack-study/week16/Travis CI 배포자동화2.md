@@ -59,8 +59,8 @@ EC2가 CodeDeploy를 연동받을 수 있도록 EC2에서 사용할 역할을 �
     os: linux
     files:
         - source: /
-        destination: /home/ec2-user/app/step2/zip/
-        overwrite: yes
+          destination: /home/ec2-user/app/step2/zip/
+          overwrite: yes
     ```
 
 -   `.travis.yml`
@@ -73,13 +73,13 @@ EC2가 CodeDeploy를 연동받을 수 있도록 EC2에서 사용할 역할을 �
       access_key_id: $AWS_ACCESS_KEY
       secret_access_key: $AWS_SECRET_KEY
 
-      bucket: swchoi-springboot-build
+      bucket: freelec-springboot-build-aaxx98
       key: springboot-webservice.zip
 
       bundle_type: zip
-      application: springboot-webservice
+      application: freelec-springboot2-webservice.zip
 
-      deplyment_group: springboot-webservice-group
+      deplyment_group: freelec-springboot2-webservice-group
       region: ap-northeast-2
       wait-until-deployed: true
     ```
@@ -144,7 +144,7 @@ before_deploy:
     - cp build/libs/*.jar before-deploy/
     - cd before-deploy && zip -r before-deploy *
     - cd ../ && mkdir -p deploy
-    - mv before-deploy/before-deploy.zip deploy/springboot-webservice.zip
+    - mv before-deploy/before-deploy.zip deploy/freelec-springboot2-webservice.zip
 ```
 
 ### `appspec.yml` 파일 수정
@@ -169,6 +169,10 @@ hooks:
           timeout: 60
           runas: ec2-user
 ```
+
+## \*_배포 로그파일 보는법👨‍💻\*_
+
+> ## less /var/log/aws/codedeploy-agent/codedeploy-agent.log
 
 ## 6. 테스트, 빌드, 배포 자동화 완료
 
