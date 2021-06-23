@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Project from "../components/Project";
+import Footer from "../components/Footer";
 import Fade from "react-reveal/Fade";
 import "./Detail.css";
 
@@ -33,47 +34,50 @@ class Detail extends React.Component {
         if (location.state) {
             const project = location.state;
             return (
-                <div className="detail">
-                    <div
-                        className="header"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(${project.detail.linkimg})`,
-                        }}
-                    >
-                        <h1>{project.title}</h1>
-                        <p className="date">{`(${project.date[0]} ~ ${project.date[1]})`}</p>
-                    </div>
-
-                    <Fade right>
-                        <div className="tags">
-                            {project.tags.map(e => {
-                                return <span>#{e}</span>;
-                            })}
+                <div>
+                    <div className="detail">
+                        <div
+                            className="header"
+                            style={{
+                                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(${project.detail.linkimg})`,
+                            }}
+                        >
+                            <h1>{project.title}</h1>
+                            <p className="date">{`(${project.date[0]} ~ ${project.date[1]})`}</p>
                         </div>
-                    </Fade>
-                    <div className="detail-contents">
-                        <Fade bottom>
-                            <h2>프로젝트 설명</h2>
-                            <div>{project.contents}</div>
-                        </Fade>
 
-                        <Fade bottom>
-                            <Role detail={project.detail}></Role>
+                        <Fade right>
+                            <div className="tags">
+                                {project.tags.map(e => {
+                                    return <span>#{e}</span>;
+                                })}
+                            </div>
                         </Fade>
-                        <Fade bottom>
-                            <span className="project-link">
-                                프로젝트로 이동
-                            </span>
-                            <a href={project.detail.link}>
-                                <i class="fab fa-github-alt fa-2x"></i>
-                            </a>
-                        </Fade>
-                        <img
-                            className="image"
-                            src={project.detail.image}
-                            alt={project.title}
-                        ></img>
+                        <div className="detail-contents">
+                            <Fade bottom>
+                                <h2>프로젝트 설명</h2>
+                                <div>{project.contents}</div>
+                            </Fade>
+
+                            <Fade bottom>
+                                <Role detail={project.detail}></Role>
+                            </Fade>
+                            <Fade bottom>
+                                <span className="project-link">
+                                    프로젝트로 이동
+                                </span>
+                                <a href={project.detail.link}>
+                                    <i class="fab fa-github-alt fa-2x"></i>
+                                </a>
+                            </Fade>
+                            <img
+                                className="image"
+                                src={project.detail.image}
+                                alt={project.title}
+                            ></img>
+                        </div>
                     </div>
+                    <Footer></Footer>
                 </div>
             );
         } else {
